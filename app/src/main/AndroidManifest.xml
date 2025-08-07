@@ -12,14 +12,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Plantsfrontendandroid">
         <activity
-            android:name=".MainActivity"
+            android:name=".Register.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Login.LoginActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
+                <!-- 标记为入口文件 -->
+                <action android:name="android.intent.action.MAIN" />
+                <!-- 显示在启动器中 -->
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

@@ -1,8 +1,17 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Plantsfrontendandroid" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.Plantsfrontendandroid" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+        <!-- 透明状态栏 -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+
+        <!-- 允许内容延伸到刘海屏（全面屏适配） -->
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+
     </style>
 
     <style name="Theme.Plantsfrontendandroid" parent="Base.Theme.Plantsfrontendandroid" />

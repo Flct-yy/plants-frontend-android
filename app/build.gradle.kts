@@ -15,6 +15,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
     }
 
     buildTypes {
@@ -26,15 +27,16 @@ android {
             )
         }
     }
-    sourceSets {
-        named("main") {
-            res.srcDirs(
-                "src/main/res",
-                "src/main/res/layouts/community",
-                "src/main/res/layouts/garden"
-            )
-        }
-    }
+
+//    sourceSets {
+//        named("main") {
+//            res.srcDirs(
+//                "src/main/res",
+//                "src/main/res/layout/community",
+//                "src/main/res/layout/garden"
+//            )
+//        }
+//    }
 
 
 
