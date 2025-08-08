@@ -158,6 +158,12 @@ public class RegisterActivity extends AppCompatActivity {
                     // 延迟1秒执行
                     handler.postDelayed(accountToastRunnable, TOAST_DELAY_TIME);
                 }
+                /*
+                 * 在过程中先验证按钮是否可以改变(也就是addTextChangedListener中的),
+                 * 取消聚焦后先取消判断按钮状态判断,先验证账号是否满足需求
+                 * 账号验证也设计为防抖
+                 * 最后在执行判断按钮状态判断
+                 */
                 updateRegisterButtonStatus();
             }
         });
