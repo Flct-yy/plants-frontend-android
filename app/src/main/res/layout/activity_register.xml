@@ -113,9 +113,11 @@
                             android:textSize="16dp"
                             android:textColor="#BBBBC4"/>
                         <EditText
+                            android:id="@+id/register_account"
                             android:layout_width="match_parent"
                             android:layout_height="52dp"
                             android:layout_marginTop="8dp"
+                            android:inputType="phone"
                             android:background="@drawable/login_register_edit"/>
                     </LinearLayout>
                     <LinearLayout
@@ -173,6 +175,7 @@
                             android:textSize="16dp"
                             android:textColor="#BBBBC4"/>
                         <EditText
+                            android:id="@+id/register_password"
                             android:layout_width="match_parent"
                             android:layout_height="52dp"
                             android:layout_marginTop="8dp"
@@ -194,6 +197,7 @@
                             android:textSize="16dp"
                             android:textColor="#BBBBC4"/>
                         <EditText
+                            android:id="@+id/register_confirm_password"
                             android:layout_width="match_parent"
                             android:layout_height="52dp"
                             android:layout_marginTop="8dp"
@@ -204,13 +208,15 @@
             </LinearLayout>
 
             <Button
+                android:id="@+id/register_btn_register"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:layout_marginTop="44dp"
                 android:text="注册"
                 android:textSize="20dp"
                 android:textColor="@color/login_register_forgot_btn_color"
-                android:background="@drawable/login_register_btn_login"/>
+                android:background="@drawable/login_register_btn_login"
+                android:enabled="false"/>
         </LinearLayout>
 
     </LinearLayout>

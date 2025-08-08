@@ -1,26 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- res/drawable/btn_back.xml -->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- 默认状态 -->
-    <item android:state_pressed="false">
+    <!-- 按下状态（增加背景色变化） -->
+    <item android:state_pressed="true">
         <shape android:shape="rectangle">
-            <!-- 无填充色 -->
-            <solid android:color="@android:color/transparent" />
-            <!-- 1mm 描边（实际使用建议换算为dp） -->
+            <!-- 按压时浅蓝色背景 -->
+            <solid android:color="#22022E57" /> <!-- 带透明度的蓝色 -->
+            <!-- 深色描边 -->
             <stroke
-                android:width="1dp"
-                android:color="#022E57" />
+                android:width="1.5dp"
+                android:color="#011A33" />
             <corners android:radius="16dp" />
+            <!-- 添加轻微内边距防止文字被挤压 -->
+            <padding
+                android:left="8dp"
+                android:top="4dp"
+                android:right="8dp"
+                android:bottom="4dp" />
         </shape>
     </item>
 
-    <!-- 按下状态 -->
-    <item android:state_pressed="true">
+    <!-- 默认状态 -->
+    <item>
         <shape android:shape="rectangle">
-            <!-- 按压时保留描边，可调整颜色 -->
+            <!-- 透明背景 -->
+            <solid android:color="@android:color/transparent" />
+            <!-- 标准描边 -->
             <stroke
-                android:width="1dp"
-                android:color="#011A33" /> <!-- 更深的蓝色 -->
+                android:width="1.5dp"
+                android:color="#022E57" />
             <corners android:radius="16dp" />
         </shape>
     </item>
@@ -28,9 +35,12 @@
     <!-- 禁用状态 -->
     <item android:state_enabled="false">
         <shape android:shape="rectangle">
+            <!-- 浅灰色背景 -->
+            <solid android:color="#F5F5F5" />
+            <!-- 灰色描边 -->
             <stroke
                 android:width="1dp"
-                android:color="#999999" /> <!-- 灰色描边 -->
+                android:color="#CCCCCC" />
             <corners android:radius="16dp" />
         </shape>
     </item>

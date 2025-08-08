@@ -44,6 +44,13 @@ public class LoginActivity extends AppCompatActivity {
     private Runnable accountValidationRunnable;
     private Runnable passwordValidationRunnable;
 
+    // Toast延迟显示时间常量
+    private static final long TOAST_DELAY_TIME = 1000; // 1秒
+
+    // Toast显示任务Runnable
+    private Runnable accountToastRunnable;
+    private Runnable passwordToastRunnable;
+
     private final CompositeDisposable disposables = new CompositeDisposable();
 
 
@@ -74,6 +81,50 @@ public class LoginActivity extends AppCompatActivity {
                     RenderEffect.createBlurEffect(300f, 300f, Shader.TileMode.CLAMP)
             );
         }
+
+        // 账号输入框失焦监听器
+        etAccount.setOnFocusChangeListener((v, hasFocus) -> {
+            if (!hasFocus) {
+                // 取消前一个未执行的验证
+                handler.removeCallbacks(accountValidationRunnable);
+                // 获取当前输入值
+                String phone = etAccount.getText().toString();
+                // 立即执行验证（不再延迟）
+                if (!isValidPhoneNumber(phone) && !phone.isEmpty()) {
+                    // 取消之前的Toast任务
+                    handler.removeCallbacks(accountToastRunnable);
+                    // 创建新的Toast任务
+                    accountToastRunnable = () -> {
+                        Toast.makeText(LoginActivity.this, "请输入正确的手机号", Toast.LENGTH_SHORT).show();
+                    };
+                    // 延迟1秒执行
+                    handler.postDelayed(accountToastRunnable, TOAST_DELAY_TIME);
+                }
+                updateLoginButtonStatus();
+            }
+        });
+
+        // 密码输入框失焦监听器
+        etPassword.setOnFocusChangeListener((v, hasFocus) -> {
+            if (!hasFocus) {
+                // 取消前一个未执行的验证
+                handler.removeCallbacks(passwordValidationRunnable);
+                // 获取当前输入值
+                String password = etPassword.getText().toString();
+                // 立即执行验证（不再延迟）
+                if (!isValidPassword(password) && !password.isEmpty()) {
+                    // 取消之前的Toast任务
+                    handler.removeCallbacks(passwordToastRunnable);
+                    // 创建新的Toast任务
+                    passwordToastRunnable = () -> {
+                        Toast.makeText(LoginActivity.this, "密码长度至少6位", Toast.LENGTH_SHORT).show();
+                    };
+                    // 延迟1秒执行
+                    handler.postDelayed(passwordToastRunnable, TOAST_DELAY_TIME);
+                }
+                updateLoginButtonStatus();
+            }
+        });
 
         //设置登录按钮防抖点击
         setupLoginButtonDebounce();
@@ -138,23 +189,18 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                updateLoginButtonStatus();
-            }
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
 
             @Override
             public void afterTextChanged(Editable s) {
-                // 验证手机格式
-                String phone = s.toString();
-                handler.removeCallbacks(accountValidationRunnable); // 取消前一个未执行的验证
-
+                // 取消前一个未执行的按钮状态更新
+                handler.removeCallbacks(accountValidationRunnable);
+                // 创建新的按钮状态更新任务
                 accountValidationRunnable = () -> {
-                    if (!isValidPhoneNumber(phone) && !phone.isEmpty()) {
-                        Toast.makeText(LoginActivity.this, "请输入正确的手机号", Toast.LENGTH_SHORT).show();
-                    }
+                    updateLoginButtonStatus();
                 };
-
-                handler.postDelayed(accountValidationRunnable, 800); // 延迟800ms（无新输入时触发）
+                // 延迟500ms执行，实现防抖
+                handler.postDelayed(accountValidationRunnable, 500);
             }
         });
 
@@ -166,23 +212,18 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                updateLoginButtonStatus();
-            }
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
 
             @Override
             public void afterTextChanged(Editable s) {
-                // 验证密码格式
-                String password = s.toString();
-                handler.removeCallbacks(passwordValidationRunnable); // 取消前一个未执行的验证
-
+                // 取消前一个未执行的按钮状态更新
+                handler.removeCallbacks(passwordValidationRunnable);
+                // 创建新的按钮状态更新任务
                 passwordValidationRunnable = () -> {
-                    if (!isValidPassword(password) && !password.isEmpty()) {
-                        Toast.makeText(LoginActivity.this, "密码长度至少6位", Toast.LENGTH_SHORT).show();
-                    }
+                    updateLoginButtonStatus();
                 };
-
-                handler.postDelayed(passwordValidationRunnable, 800); // 延迟800ms（无新输入时触发）
+                // 延迟500ms执行，实现防抖
+                handler.postDelayed(passwordValidationRunnable, 500);
             }
         });
     }
