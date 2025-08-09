@@ -12,8 +12,8 @@
 
     <item
         android:id="@+id/placeholder"
-        android:icon="@drawable/ic_blank"
-        android:title="Add"/>
+        android:enabled="false"
+        android:title=""/>
 
     <item
         android:id="@+id/nav_chart"

@@ -7,7 +7,9 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.wect.plants_frontend_android.Based.BaseActivity;
+import com.wect.plants_frontend_android.Fragments.Add.AddFragment;
 import com.wect.plants_frontend_android.Fragments.Chart.ChartFragment;
 import com.wect.plants_frontend_android.Fragments.Home.HomeFragment;
 import com.wect.plants_frontend_android.Fragments.PlantList.PlantListFragment;
@@ -15,7 +17,10 @@ import com.wect.plants_frontend_android.Fragments.Settings.SettingsFragment;
 
 public class MainActivity extends BaseActivity {
 
+    // 地下导航
     private BottomNavigationView bottomNavigationView;
+    // 中间的按钮
+    private FloatingActionButton fabCenter;
 
 
     @Override
@@ -42,6 +47,7 @@ public class MainActivity extends BaseActivity {
      */
     private void initViews() {
         bottomNavigationView = findViewById(R.id.bottom_navigation);
+        fabCenter = findViewById(R.id.fab_center);
     }
     /**
      * 设置监听器
@@ -63,6 +69,18 @@ public class MainActivity extends BaseActivity {
                 loadFragment(new SettingsFragment());
             }
             return true;
+        });
+
+        // 中间悬浮按钮点击（打开 AddFragment）
+        fabCenter.setOnClickListener(v -> {
+            loadFragment(new AddFragment());
+            // 如果需要显示它在导航选中状态，可以手动取消导航栏选中项
+            // 分组 ID   0，表示作用于所有菜单项。
+            bottomNavigationView.getMenu().setGroupCheckable(0, true, false);
+            for (int i = 0; i < bottomNavigationView.getMenu().size(); i++) {
+                bottomNavigationView.getMenu().getItem(i).setChecked(false);
+            }
+            bottomNavigationView.getMenu().setGroupCheckable(0, true, true);
         });
     }
 
