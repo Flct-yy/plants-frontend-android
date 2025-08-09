@@ -10,13 +10,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import androidx.activity.EdgeToEdge;
 import androidx.activity.OnBackPressedCallback;
 
 import com.wect.plants_frontend_android.R;
 import com.wect.plants_frontend_android.Utils.LoginUiUtils;
 import com.wect.plants_frontend_android.Utils.ToastUtil;
-import com.wect.plants_frontend_android.base.BaseActivity;
+import com.wect.plants_frontend_android.Based.BaseActivity;
 
 public class ForgotActivity extends BaseActivity {
 

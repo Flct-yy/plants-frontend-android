@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--导航栏-->
+    <color name="nav_selected">#1976D2</color> <!-- 蓝色 -->
+    <color name="nav_unselected">#9E9E9E</color> <!-- 灰色 -->
+
 </resources>

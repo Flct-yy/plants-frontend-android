@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.activity.OnBackPressedCallback;
 
 import com.jakewharton.rxbinding4.view.RxView;
@@ -19,7 +18,7 @@ import com.wect.plants_frontend_android.R;
 import com.wect.plants_frontend_android.Register.RegisterActivity;
 import com.wect.plants_frontend_android.Utils.LoginUiUtils;
 import com.wect.plants_frontend_android.Utils.ToastUtil;
-import com.wect.plants_frontend_android.base.BaseActivity;
+import com.wect.plants_frontend_android.Based.BaseActivity;
 
 import java.util.concurrent.TimeUnit;
 

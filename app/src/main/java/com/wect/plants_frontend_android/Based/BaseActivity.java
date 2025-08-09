@@ -1,4 +1,4 @@
-package com.wect.plants_frontend_android.base;
+package com.wect.plants_frontend_android.Based;
 
 import android.os.Bundle;
 import android.view.View;
