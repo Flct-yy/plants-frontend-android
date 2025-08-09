@@ -20,7 +20,7 @@
     <!-- 禁用状态（可选） -->
     <item android:state_enabled="false">
         <shape android:shape="rectangle">
-            <solid android:color="#CCCCCC" />  <!-- 灰色表示禁用 -->
+            <solid android:color="#A8D98F" />  <!-- 灰色表示禁用 -->
             <corners android:radius="8dp" />
         </shape>
     </item>

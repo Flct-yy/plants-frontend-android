@@ -20,7 +20,7 @@
     </item>
 
     <!-- 默认状态 -->
-    <item>
+    <item android:state_pressed="false">
         <shape android:shape="rectangle">
             <!-- 透明背景 -->
             <solid android:color="@android:color/transparent" />
