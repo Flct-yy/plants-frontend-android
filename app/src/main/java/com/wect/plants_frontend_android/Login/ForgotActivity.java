@@ -1,31 +1,28 @@
 package com.wect.plants_frontend_android.Login;
 
-import android.graphics.RenderEffect;
-import android.graphics.Shader;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.OnBackPressedCallback;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.wect.plants_frontend_android.R;
+import com.wect.plants_frontend_android.Utils.LoginUiUtils;
+import com.wect.plants_frontend_android.Utils.ToastUtil;
+import com.wect.plants_frontend_android.base.BaseActivity;
 
-public class ForgotActivity extends AppCompatActivity {
+public class ForgotActivity extends BaseActivity {
 
     private Button btnSendCode;
     private Button btnResetPassword;
+    private Button registerToLogin;
     private EditText etVerificationCode;
     private EditText etAccount; // 假设存在账号输入框
     private EditText etNewPassword;
@@ -52,36 +49,32 @@ public class ForgotActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_forgot_password);
 
-        // 初始化handler
-        handler = new Handler();
+        // 初始化控件
+        initViews();
+
+        // 设置监听器
+        setListeners();
 
         //实现模糊效果
-        View greenBlurView = findViewById(R.id.login_bg_left);
-        View gradientBlurView = findViewById(R.id.login_bg_right);
+        View leftBlurView = findViewById(R.id.login_bg_left);
+        View rightBlurView = findViewById(R.id.login_bg_right);
+        LoginUiUtils.LoginBackgroundBlur(leftBlurView, rightBlurView);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            // 对左层应用模糊
-            greenBlurView.setRenderEffect(
-                    RenderEffect.createBlurEffect(300f, 300f, Shader.TileMode.CLAMP)
-            );
 
-            // 对右层应用模糊
-            gradientBlurView.setRenderEffect(
-                    RenderEffect.createBlurEffect(300f, 300f, Shader.TileMode.CLAMP)
-            );
-        }
-
-        //去登录按钮
-        Button registerToLogin = findViewById(R.id.register_to_login);
-        registerToLogin.setOnClickListener(new View.OnClickListener() {
+        // 现代方式处理返回按钮 (API 33+推荐)
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
-            public void onClick(View v) {
-                //跳转到注册用户界面
+            public void handleOnBackPressed() {
                 finishWithAnimation();
             }
         });
+    }
 
-        // 账号输入框（假设布局中有此控件）
+    /**
+     * 初始化控件
+     */
+    private void initViews() {
+        // 账号输入框
         etAccount = findViewById(R.id.forgot_account);
 
         // 验证码
@@ -93,6 +86,17 @@ public class ForgotActivity extends AppCompatActivity {
         etConfirmNewPassword = findViewById(R.id.forgot_confirm_password);
         btnResetPassword = findViewById(R.id.forgot_btn_forgot);
 
+        // 登录按钮
+        registerToLogin = findViewById(R.id.register_to_login);
+
+        // 初始化Handler（使用主线程Looper）
+        handler = new Handler(Looper.getMainLooper());
+    }
+
+    /**
+     * 设置监听器
+     */
+    private void setListeners() {
         // 新密码输入框文本变化监听器 - 只更新按钮状态
         etNewPassword.addTextChangedListener(new TextWatcher() {
             @Override
@@ -124,12 +128,12 @@ public class ForgotActivity extends AppCompatActivity {
                 // 获取当前输入值
                 String password = etNewPassword.getText().toString();
                 // 立即执行验证
-                if (!isValidPassword(password) && !password.isEmpty()) {
+                if (!LoginUiUtils.isValidPhoneNumber(password) && !password.isEmpty()) {
                     // 取消之前的Toast任务
                     handler.removeCallbacks(newPasswordToastRunnable);
                     // 创建新的Toast任务
                     newPasswordToastRunnable = () -> {
-                        Toast.makeText(ForgotActivity.this, "密码长度不能少于6位", Toast.LENGTH_SHORT).show();
+                        ToastUtil.show(this, "密码长度不能少于6位");
                     };
                     // 延迟1秒执行
                     handler.postDelayed(newPasswordToastRunnable, TOAST_DELAY_TIME);
@@ -175,7 +179,7 @@ public class ForgotActivity extends AppCompatActivity {
                     handler.removeCallbacks(confirmNewPasswordToastRunnable);
                     // 创建新的Toast任务
                     confirmNewPasswordToastRunnable = () -> {
-                        Toast.makeText(ForgotActivity.this, "两次输入的密码不一致", Toast.LENGTH_SHORT).show();
+                        ToastUtil.show(this, "两次输入的密码不一致");
                     };
                     // 延迟1秒执行
                     handler.postDelayed(confirmNewPasswordToastRunnable, TOAST_DELAY_TIME);
@@ -190,7 +194,7 @@ public class ForgotActivity extends AppCompatActivity {
             // 通常需要验证所有输入项都有效
             if (isFormValid()) {
                 // 执行重置密码的网络请求等操作
-                Toast.makeText(ForgotActivity.this, "密码重置成功", Toast.LENGTH_SHORT).show();
+                ToastUtil.show(this, "密码重置成功");
                 finishWithAnimation();
             }
         });
@@ -226,12 +230,12 @@ public class ForgotActivity extends AppCompatActivity {
                 // 获取当前输入值
                 String account = etAccount.getText().toString();
                 // 立即执行验证
-                if (!isValidAccount(account) && !account.isEmpty()) {
+                if (!LoginUiUtils.isValidPhoneNumber(account) && !account.isEmpty()) {
                     // 取消之前的Toast任务
                     handler.removeCallbacks(accountToastRunnable);
                     // 创建新的Toast任务
                     accountToastRunnable = () -> {
-                        Toast.makeText(ForgotActivity.this, "请输入正确的账号", Toast.LENGTH_SHORT).show();
+                        ToastUtil.show(this, "请输入正确的账号");
                     };
                     // 延迟1秒执行
                     handler.postDelayed(accountToastRunnable, TOAST_DELAY_TIME);
@@ -271,12 +275,12 @@ public class ForgotActivity extends AppCompatActivity {
                 // 获取当前输入值
                 String code = etVerificationCode.getText().toString();
                 // 立即执行验证
-                if (!isValidVerificationCode(code) && !code.isEmpty()) {
+                if (!LoginUiUtils.isValidVerificationCode(code) && !code.isEmpty()) {
                     // 取消之前的Toast任务
                     handler.removeCallbacks(verificationCodeToastRunnable);
                     // 创建新的Toast任务
                     verificationCodeToastRunnable = () -> {
-                        Toast.makeText(ForgotActivity.this, "验证码格式不正确", Toast.LENGTH_SHORT).show();
+                        ToastUtil.show(this, "验证码格式不正确");
                     };
                     // 延迟1秒执行
                     handler.postDelayed(verificationCodeToastRunnable, TOAST_DELAY_TIME);
@@ -293,13 +297,13 @@ public class ForgotActivity extends AppCompatActivity {
             // 创建新的发送验证码任务
             sendCodeRunnable = () -> {
                 String account = etAccount.getText().toString();
-                if (!isValidAccount(account)) {
-                    Toast.makeText(ForgotActivity.this, "请输入正确的账号", Toast.LENGTH_SHORT).show();
+                if (!LoginUiUtils.isValidPhoneNumber(account)) {
+                    ToastUtil.show(this, "请输入正确的账号");
                     return;
                 }
 
                 if (!isCounting) {
-                    startCountDown();
+                    LoginUiUtils.startCountDown(btnSendCode,60000,1000);
                     // 模拟发送验证码，实际项目中这里应该是请求服务器的代码
                     simulateSendVerificationCode();
                 }
@@ -309,43 +313,23 @@ public class ForgotActivity extends AppCompatActivity {
             handler.postDelayed(sendCodeRunnable, 300);
         });
 
-        // 现代方式处理返回按钮 (API 33+推荐)
-        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+        // 登录按钮跳转
+        registerToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void handleOnBackPressed() {
+            public void onClick(View v) {
+                //跳转到注册用户界面
                 finishWithAnimation();
             }
         });
     }
 
     /**
-     * 开始60秒倒计时
-     */
-    private void startCountDown() {
-        isCounting = true;
-        btnSendCode.setEnabled(false);
-
-        countDownTimer = new CountDownTimer(60000, 1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                btnSendCode.setText(millisUntilFinished / 1000 + "s后重发");
-            }
-
-            @Override
-            public void onFinish() {
-                isCounting = false;
-                btnSendCode.setEnabled(true);
-                btnSendCode.setText("发送验证码");
-            }
-        }.start();
-    }
-    /**
      * 模拟发送验证码（实际项目中替换为网络请求）
      */
     private void simulateSendVerificationCode() {
         btnSendCode.postDelayed(() -> {
             etVerificationCode.setHint("123456");
-            Toast.makeText(this, "验证码已发送", Toast.LENGTH_SHORT).show();
+            ToastUtil.show(this, "验证码已发送");
         }, 3000);
     }
     @Override
@@ -361,30 +345,6 @@ public class ForgotActivity extends AppCompatActivity {
     }
 
     /**
-     * 验证账号格式
-     */
-    private boolean isValidAccount(String account) {
-        // 简单示例：验证手机号格式
-        return account.matches("1[3-9]\\d{9}");
-    }
-
-    /**
-     * 验证验证码格式
-     */
-    private boolean isValidVerificationCode(String code) {
-        // 简单示例：验证6位数字
-        return code.matches("\\d{6}");
-    }
-
-    /**
-     * 验证密码格式
-     */
-    private boolean isValidPassword(String password) {
-        // 简单示例：验证密码长度至少6位
-        return password.length() >= 6;
-    }
-
-    /**
      * 验证表单是否有效
      */
     private boolean isFormValid() {
@@ -393,9 +353,9 @@ public class ForgotActivity extends AppCompatActivity {
         String password = etNewPassword.getText().toString();
         String confirmPassword = etConfirmNewPassword.getText().toString();
 
-        boolean isAccountValid = isValidAccount(account);
-        boolean isCodeValid = isValidVerificationCode(code);
-        boolean isPasswordValid = isValidPassword(password);
+        boolean isAccountValid = LoginUiUtils.isValidPhoneNumber(account);
+        boolean isCodeValid = LoginUiUtils.isValidVerificationCode(code);
+        boolean isPasswordValid = LoginUiUtils.isValidPassword(password);
         boolean isConfirmPasswordValid = password.equals(confirmPassword) && !confirmPassword.isEmpty();
 
         return isAccountValid && isCodeValid && isPasswordValid && isConfirmPasswordValid;
@@ -410,9 +370,9 @@ public class ForgotActivity extends AppCompatActivity {
         String password = etNewPassword.getText().toString();
         String confirmPassword = etConfirmNewPassword.getText().toString();
 
-        boolean isAccountValid = isValidAccount(account);
-        boolean isCodeValid = isValidVerificationCode(code);
-        boolean isPasswordValid = isValidPassword(password);
+        boolean isAccountValid = LoginUiUtils.isValidPhoneNumber(account);
+        boolean isCodeValid = LoginUiUtils.isValidVerificationCode(code);
+        boolean isPasswordValid = LoginUiUtils.isValidPassword(password);
         boolean isConfirmPasswordValid = password.equals(confirmPassword) && !confirmPassword.isEmpty();
 
         // 更新重置密码按钮状态
