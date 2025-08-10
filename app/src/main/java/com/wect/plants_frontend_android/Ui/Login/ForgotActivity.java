@@ -1,4 +1,4 @@
-package com.wect.plants_frontend_android.Login;
+package com.wect.plants_frontend_android.Ui.Login;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;

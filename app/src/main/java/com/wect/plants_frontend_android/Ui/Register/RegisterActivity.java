@@ -1,4 +1,4 @@
-package com.wect.plants_frontend_android.Register;
+package com.wect.plants_frontend_android.Ui.Register;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;

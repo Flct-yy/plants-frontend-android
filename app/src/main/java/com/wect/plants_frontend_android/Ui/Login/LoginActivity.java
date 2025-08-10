@@ -1,4 +1,4 @@
-package com.wect.plants_frontend_android.Login;
+package com.wect.plants_frontend_android.Ui.Login;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +15,7 @@ import androidx.activity.OnBackPressedCallback;
 
 import com.jakewharton.rxbinding4.view.RxView;
 import com.wect.plants_frontend_android.R;
-import com.wect.plants_frontend_android.Register.RegisterActivity;
+import com.wect.plants_frontend_android.Ui.Register.RegisterActivity;
 import com.wect.plants_frontend_android.Utils.LoginUiUtils;
 import com.wect.plants_frontend_android.Utils.ToastUtil;
 import com.wect.plants_frontend_android.Based.BaseActivity;

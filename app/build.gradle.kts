@@ -61,6 +61,9 @@ dependencies {
     implementation("io.reactivex.rxjava3:rxjava:3.1.5")
     implementation("com.jakewharton.rxbinding4:rxbinding:4.0.0")
 
-    //导航栏依赖
+    //导航栏依赖 Material 组件
     implementation("com.google.android.material:material:1.12.0")
+
+    //RecyclerView
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
 }

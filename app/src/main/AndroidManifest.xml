@@ -12,16 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Plantsfrontendandroid">
         <activity
-            android:name=".Login.ForgotActivity"
+            android:name=".Ui.Login.ForgotActivity"
             android:exported="false" />
         <activity
-            android:name=".Register.RegisterActivity"
+            android:name=".Ui.Register.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".Login.LoginActivity"
+            android:name=".Ui.Login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Ui.MainActivity"
             android:exported="true">
             <intent-filter>
 

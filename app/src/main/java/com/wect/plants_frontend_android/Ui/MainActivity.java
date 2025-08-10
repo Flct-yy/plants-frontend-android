@@ -1,9 +1,7 @@
-package com.wect.plants_frontend_android;
+package com.wect.plants_frontend_android.Ui;
 
-import android.animation.ValueAnimator;
 import android.os.Bundle;
 
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -14,6 +12,8 @@ import com.wect.plants_frontend_android.Fragments.Chart.ChartFragment;
 import com.wect.plants_frontend_android.Fragments.Home.HomeFragment;
 import com.wect.plants_frontend_android.Fragments.PlantList.PlantListFragment;
 import com.wect.plants_frontend_android.Fragments.Settings.SettingsFragment;
+import com.wect.plants_frontend_android.Model.User;
+import com.wect.plants_frontend_android.R;
 
 public class MainActivity extends BaseActivity {
 
@@ -30,6 +30,9 @@ public class MainActivity extends BaseActivity {
 
 
         //判断是否登录 是否是新用户
+        // 导航栏动画淡入淡出 添加
+        // 滑动切换界面
+        // 导航栏指示器
 
         // 初始化控件
         initViews();
