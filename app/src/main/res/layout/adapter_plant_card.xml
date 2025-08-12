@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:background="@drawable/plant_card_bg"
+    android:layout_marginBottom="8dp">
+
+    <ImageView
+        android:id="@+id/card_img"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/plant_card_img"
+        android:background="@drawable/plant_card_img_bg"/>
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:padding="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/card_plant"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Plant Name"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical">
+                <TextView
+                    android:id="@+id/card_latin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="拉丁学名"
+                    android:gravity="center_vertical"
+                    android:background="@null"
+                    android:paddingVertical="0dp"
+                    android:textSize="10sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#CCCCCC" />
+
+                <TextView
+                    android:id="@+id/card_english"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="英文名"
+                    android:gravity="center_vertical"
+                    android:background="@null"
+                    android:paddingVertical="0dp"
+                    android:textSize="10sp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="别名： "/>
+                <TextView
+                    android:id="@+id/card_alias"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="别名"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="科属种： "/>
+                <TextView
+                    android:id="@+id/card_classify"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="科属种"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="保护等级： "/>
+                <TextView
+                    android:id="@+id/card_protection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="保护等级"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="特点： "/>
+                <TextView
+                    android:id="@+id/card_characteristic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="特点"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

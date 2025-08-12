@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.wect.plants_frontend_android.Adapter.NormalItemsAdapter;
-import com.wect.plants_frontend_android.Model.NormalItem;
+import com.wect.plants_frontend_android.Model.NormalArticle;
 import com.wect.plants_frontend_android.R;
 
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class HomeFragment extends Fragment {
 
     private RecyclerView recyclerFeatured;
     private NormalItemsAdapter adapter;
-    private List<NormalItem> featuredItems;
+    private List<NormalArticle> articleList;
 
     @Nullable
     @Override
@@ -37,25 +37,47 @@ public class HomeFragment extends Fragment {
         recyclerFeatured = view.findViewById(R.id.recyclerNormal);
 
         // 准备数据
-        featuredItems = new ArrayList<>();
-        featuredItems.add(new NormalItem("DourDarcel", "10K 观看 • 4.93K 收藏", R.drawable.logo));
-        featuredItems.add(new NormalItem("CyberBrokersDeployer", "8K 观看 • 3.5K 收藏", R.drawable.logo));
-        featuredItems.add(new NormalItem("BoredApeYachtClub", "12K 观看 • 5K 收藏", R.drawable.logo));
-        featuredItems.add(new NormalItem("Azuki", "7K 观看 • 2.9K 收藏", R.drawable.logo));
-        featuredItems.add(new NormalItem("DourDarcel", "10K 观看 • 4.93K 收藏", R.drawable.logo));
-        featuredItems.add(new NormalItem("CyberBrokersDeployer", "8K 观看 • 3.5K 收藏", R.drawable.logo));
-        featuredItems.add(new NormalItem("BoredApeYachtClub", "12K 观看 • 5K 收藏", R.drawable.logo));
-        featuredItems.add(new NormalItem("Azuki", "7K 观看 • 2.9K 收藏", R.drawable.logo));
-        featuredItems.add(new NormalItem("DourDarcel", "10K 观看 • 4.93K 收藏", R.drawable.logo));
-        featuredItems.add(new NormalItem("CyberBrokersDeployer", "8K 观看 • 3.5K 收藏", R.drawable.logo));
-        featuredItems.add(new NormalItem("BoredApeYachtClub", "12K 观看 • 5K 收藏", R.drawable.logo));
-        featuredItems.add(new NormalItem("Azuki", "7K 观看 • 2.9K 收藏", R.drawable.logo));
+        articleList = new ArrayList<>();
+        articleList.add(new NormalArticle(
+                "小王",
+                "如何养好绿萝",
+                "08-11",
+                false,
+                R.drawable.ic_user,
+                R.drawable.logo,
+                10234,
+                456,
+                789
+        ));
+        articleList.add(new NormalArticle(
+                "小李",
+                "多肉植物的养护技巧",
+                "08-10",
+                true,
+                R.drawable.logo,
+                R.drawable.logo,
+                5689,
+                123,
+                456
+        ));
+        articleList.add(new NormalArticle(
+                "小张",
+                "空气凤梨怎么养？",
+                "08-09",
+                false,
+                R.drawable.ic_user,
+                R.drawable.ic_user,
+                3021,
+                78,
+                213
+        ));
 
-        // 设置网格布局为 2 列
-        recyclerFeatured.setLayoutManager(new GridLayoutManager(getContext(), 2));
+
+        // 设置网格布局为 1 列
+        recyclerFeatured.setLayoutManager(new GridLayoutManager(getContext(), 1));
 
         // 设置适配器
-        adapter = new NormalItemsAdapter(getContext(), featuredItems);
+        adapter = new NormalItemsAdapter(getContext(), articleList);
         recyclerFeatured.setAdapter(adapter);
 
         return view;

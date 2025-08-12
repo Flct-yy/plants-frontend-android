@@ -2,9 +2,14 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="light_grey">#bfbfbf</color>
+    <color name="darker_gray">#AAAAAA</color>
 
     <!--背景色-->
     <color name="bg_color">#4CE5B1</color>
+    <color name="bg_gray">#f3f7f6</color>
+    <color name="bg_fit_gray">#f9f9f9</color>
+
 
     <!--导航栏-->
     <color name="nav_selected">#1976D2</color> <!-- 蓝色 -->

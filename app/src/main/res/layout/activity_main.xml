@@ -10,6 +10,7 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="56dp"
         android:layout_above="@id/bottom_navigation" />
 
     <!-- 底部导航栏 -->
@@ -34,15 +35,15 @@
         android:id="@+id/fab_center"
         android:layout_width="54dp"
         android:layout_height="54dp"
-        android:layout_marginBottom="10dp"
         android:backgroundTint="@color/nav_selected"
         android:src="@drawable/ic_add"
-        app:maxImageSize="28dp"
-        app:fabCustomSize="54dp"
+        android:layout_marginBottom="10dp"
         app:elevation="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/container"
+        app:fabCustomSize="54dp"
+        app:layout_constraintBottom_toBottomOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:maxImageSize="28dp"
         app:tint="@android:color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

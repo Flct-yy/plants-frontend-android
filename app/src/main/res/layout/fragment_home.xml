@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="@color/white"
+    android:background="@color/bg_gray"
     android:fillViewport="true">
 
     <LinearLayout
@@ -12,52 +11,51 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- 搜索标题 -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="搜索"
-            android:textColor="@android:color/black"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
         <!-- 搜索栏 -->
-        <com.google.android.material.textfield.TextInputLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:boxBackgroundMode="filled"
-            app:boxBackgroundColor="#1B2534">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Search your NFT..."
-                android:textColor="@android:color/black"
-                android:inputType="text"
-                android:drawableStart="@android:drawable/ic_menu_search" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- 类别 -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="类别"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:layout_marginTop="20dp"
-            android:textStyle="bold" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerCategories"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginTop="8dp"
+            android:layout_height="40dp"
             android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:scrollbars="none" />
+            android:gravity="center_vertical"
+            android:paddingHorizontal="8dp"
+            android:background="@drawable/search_bg"
+            android:layout_margin="8dp">
 
+            <!-- 搜索图标 -->
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_search"
+                android:layout_marginEnd="8dp"
+                app:tint="@color/darker_gray" />
+
+            <!-- 输入框 -->
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="请输入..."
+                android:textColor="@color/darker_gray"
+                android:textColorHint="@color/light_grey"
+                android:background="@null"
+                android:paddingVertical="0dp" />
+
+            <!-- 分隔线 -->
+            <View
+                android:layout_width="1dp"
+                android:layout_height="20dp"
+                android:background="@color/darker_gray"
+                android:layout_marginHorizontal="8dp" />
+
+            <!-- 搜索按钮 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="搜索"
+                android:textColor="@color/darker_gray"
+                android:textSize="16sp" />
+
+        </LinearLayout>
         <!-- 推荐 -->
         <TextView
             android:layout_width="wrap_content"

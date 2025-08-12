@@ -7,12 +7,11 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.wect.plants_frontend_android.Based.BaseActivity;
-import com.wect.plants_frontend_android.Fragments.Add.AddFragment;
-import com.wect.plants_frontend_android.Fragments.Chart.ChartFragment;
+import com.wect.plants_frontend_android.Fragments.ChatAI.AIFragment;
+import com.wect.plants_frontend_android.Fragments.Message.MessageFragment;
 import com.wect.plants_frontend_android.Fragments.Home.HomeFragment;
 import com.wect.plants_frontend_android.Fragments.PlantList.PlantListFragment;
-import com.wect.plants_frontend_android.Fragments.Settings.SettingsFragment;
-import com.wect.plants_frontend_android.Model.User;
+import com.wect.plants_frontend_android.Fragments.User.UserFragment;
 import com.wect.plants_frontend_android.R;
 
 public class MainActivity extends BaseActivity {
@@ -67,16 +66,16 @@ public class MainActivity extends BaseActivity {
             } else if (id == R.id.nav_list) {
                 loadFragment(new PlantListFragment());
             } else if (id == R.id.nav_chart) {
-                loadFragment(new ChartFragment());
+                loadFragment(new MessageFragment());
             } else if (id == R.id.nav_settings) {
-                loadFragment(new SettingsFragment());
+                loadFragment(new UserFragment());
             }
             return true;
         });
 
-        // 中间悬浮按钮点击（打开 AddFragment）
+        // 中间悬浮按钮点击（打开 AIFragment）
         fabCenter.setOnClickListener(v -> {
-            loadFragment(new AddFragment());
+            loadFragment(new AIFragment());
             // 如果需要显示它在导航选中状态，可以手动取消导航栏选中项
             // 分组 ID   0，表示作用于所有菜单项。
             bottomNavigationView.getMenu().setGroupCheckable(0, true, false);
