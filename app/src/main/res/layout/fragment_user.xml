@@ -4,73 +4,101 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/bg_gray"
+    android:background="@color/white"
     tools:context=".Ui.Fragments.User.UserFragment">
 
-        <!-- 背景图片（可单独控制缩放） -->
+    <!-- 背景图片（可单独控制缩放） -->
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="260dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="top"
         android:adjustViewBounds="true"
         android:importantForAccessibility="no"
         android:scaleType="centerCrop"
         android:src="@drawable/user_bg" />
-        <!-- 顶部栏 -->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
+        android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical|center_horizontal"
-            android:padding="10dp"
-            android:background="@android:color/transparent" >
+            android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="0dp"
+            <FrameLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:padding="20dp"> <!-- 边框宽度 -->
 
-            <ImageView
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:src="@drawable/ic_setting"/>
+                <!-- 裁剪头像 -->
+                <ImageView
+                    android:id="@+id/user_img"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/user_img_circle"
+                    android:clipToOutline="true"
+                    android:src="@drawable/ic_user" />
+
+                <!-- 边框 -->
+                <View
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/user_img" />
+            </FrameLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:text="用户名"
+                    android:textColor="@color/white"
+                    android:textSize="24dp"/>
+                <TextView
+                    android:id="@+id/user_signed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="签名 签名 签名 签名 签名"
+                    android:textColor="@color/white"
+                    android:textSize="14dp"/>
+            </LinearLayout>
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="60dp"
-            android:paddingLeft="40dp"
-            android:paddingRight="40dp"
-            android:paddingBottom="30dp"
-            android:orientation="vertical">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="@drawable/user_function_bg">
+            <!--关注 粉丝-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/user_img"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:src="@drawable/ic_user"
-                android:background="@drawable/user_img"
-                android:clipToOutline="true"/>
-            <TextView
-                android:id="@+id/user_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="用户名"
-                android:textColor="@color/black"
-                android:textSize="16dp"/>
-            <TextView
-                android:id="@+id/user_signed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="签名 签名 签名 签名 签名"
-                android:textColor="@color/light_dark"
-                android:textSize="12dp"/>
+            </LinearLayout>
+            <!--简介-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </LinearLayout>
+            <!--导航-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </LinearLayout>
+            <!--内容-->
         </LinearLayout>
 
 
-
-
+    </LinearLayout>
 </FrameLayout>
