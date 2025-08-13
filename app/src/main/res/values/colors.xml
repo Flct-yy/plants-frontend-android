@@ -4,7 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="light_grey">#bfbfbf</color>
     <color name="darker_gray">#AAAAAA</color>
-
+    <color name="light_dark">#555a54</color>
     <!--背景色-->
     <color name="bg_color">#4CE5B1</color>
     <color name="bg_gray">#f3f7f6</color>

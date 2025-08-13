@@ -1,4 +1,4 @@
-package com.wect.plants_frontend_android.Model;
+package com.wect.plants_frontend_android.Data.Model;
 
 public class User {
     private boolean isLoginState = false;

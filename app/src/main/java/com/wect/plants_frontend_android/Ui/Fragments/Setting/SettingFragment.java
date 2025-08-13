@@ -1,4 +1,4 @@
-package com.wect.plants_frontend_android.Fragments.Message;
+package com.wect.plants_frontend_android.Ui.Fragments.Setting;
 
 import android.os.Bundle;
 
@@ -12,10 +12,10 @@ import com.wect.plants_frontend_android.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link MessageFragment#newInstance} factory method to
+ * Use the {@link SettingFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MessageFragment extends Fragment {
+public class SettingFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class MessageFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public MessageFragment() {
+    public SettingFragment() {
         // Required empty public constructor
     }
 
@@ -36,11 +36,11 @@ public class MessageFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment MessageFragment.
+     * @return A new instance of fragment SettingFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MessageFragment newInstance(String param1, String param2) {
-        MessageFragment fragment = new MessageFragment();
+    public static SettingFragment newInstance(String param1, String param2) {
+        SettingFragment fragment = new SettingFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,6 +61,6 @@ public class MessageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_message, container, false);
+        return inflater.inflate(R.layout.fragment_setting, container, false);
     }
 }

@@ -6,12 +6,12 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.wect.plants_frontend_android.Based.BaseActivity;
-import com.wect.plants_frontend_android.Fragments.ChatAI.AIFragment;
-import com.wect.plants_frontend_android.Fragments.Message.MessageFragment;
-import com.wect.plants_frontend_android.Fragments.Home.HomeFragment;
-import com.wect.plants_frontend_android.Fragments.PlantList.PlantListFragment;
-import com.wect.plants_frontend_android.Fragments.User.UserFragment;
+import com.wect.plants_frontend_android.Ui.Based.BaseActivity;
+import com.wect.plants_frontend_android.Ui.Fragments.ChatAI.AIFragment;
+import com.wect.plants_frontend_android.Ui.Fragments.Message.MessageFragment;
+import com.wect.plants_frontend_android.Ui.Fragments.Home.HomeFragment;
+import com.wect.plants_frontend_android.Ui.Fragments.PlantList.PlantListFragment;
+import com.wect.plants_frontend_android.Ui.Fragments.User.UserFragment;
 import com.wect.plants_frontend_android.R;
 
 public class MainActivity extends BaseActivity {

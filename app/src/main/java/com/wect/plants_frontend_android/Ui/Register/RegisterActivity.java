@@ -15,7 +15,7 @@ import androidx.activity.OnBackPressedCallback;
 import com.wect.plants_frontend_android.R;
 import com.wect.plants_frontend_android.Utils.LoginUiUtils;
 import com.wect.plants_frontend_android.Utils.ToastUtil;
-import com.wect.plants_frontend_android.Based.BaseActivity;
+import com.wect.plants_frontend_android.Ui.Based.BaseActivity;
 
 public class RegisterActivity extends BaseActivity {
     private Button btnSendCode;

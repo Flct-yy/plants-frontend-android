@@ -1,4 +1,4 @@
-package com.wect.plants_frontend_android.Adapter;
+package com.wect.plants_frontend_android.Ui.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,27 +10,28 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.wect.plants_frontend_android.Model.NormalArticle;
-import com.wect.plants_frontend_android.Model.PlantCard;
+import com.wect.plants_frontend_android.Data.Model.PlantCard;
 import com.wect.plants_frontend_android.R;
 
 import java.util.List;
 
 public class PlantCardAdapter extends RecyclerView.Adapter<PlantCardAdapter.ViewHolder> {
 
-    private Context context;
     private List<PlantCard> plantList;
 
-    public PlantCardAdapter(Context context, List<PlantCard> plantList) {
-        this.context = context;
+    public PlantCardAdapter(List<PlantCard> plantList) {
         this.plantList = plantList;
+    }
+
+    public void setPlantList(List<PlantCard> plantList) {
+        this.plantList = plantList;
+        notifyDataSetChanged();
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.adapter_plant_card, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_plant_card, parent, false);
         return new ViewHolder(view);
     }
 
@@ -39,6 +40,7 @@ public class PlantCardAdapter extends RecyclerView.Adapter<PlantCardAdapter.View
         PlantCard plant = plantList.get(position);
 
         holder.cardImg.setImageResource(plant.getImageResId());
+        holder.collectImg.setImageResource(plant.getCollect() ? R.drawable.ic_collected : R.drawable.ic_uncollect);
         holder.cardPlant.setText(plant.getPlantName());
         holder.cardLatin.setText(plant.getLatinName());
         holder.cardEnglish.setText(plant.getEnglishName());
@@ -54,12 +56,13 @@ public class PlantCardAdapter extends RecyclerView.Adapter<PlantCardAdapter.View
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView cardImg;
+        ImageView cardImg, collectImg;
         TextView cardPlant, cardLatin, cardEnglish, cardAlias, cardClassify, cardProtection, cardCharacteristic;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             cardImg = itemView.findViewById(R.id.card_img);
+            collectImg = itemView.findViewById(R.id.card_collect);
             cardPlant = itemView.findViewById(R.id.card_plant);
             cardLatin = itemView.findViewById(R.id.card_latin);
             cardEnglish = itemView.findViewById(R.id.card_english);

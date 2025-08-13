@@ -1,5 +1,10 @@
-package com.wect.plants_frontend_android.Fragments.PlantList;
+package com.wect.plants_frontend_android.Ui.Fragments.PlantList;
 
+import static androidx.core.content.ContentProviderCompat.requireContext;
+
+import static java.security.AccessController.getContext;
+
+import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -9,115 +14,62 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.TypedValue;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.wect.plants_frontend_android.Adapter.PlantCardAdapter;
-import com.wect.plants_frontend_android.Model.PlantCard;
+import com.wect.plants_frontend_android.Ui.Adapter.PlantCardAdapter;
 import com.wect.plants_frontend_android.R;
 import com.wect.plants_frontend_android.Utils.ToastUtil;
 import com.wect.plants_frontend_android.Utils.UnitsUtils;
+import com.wect.plants_frontend_android.Viewmodel.PlantListViewModel;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
 public class PlantListFragment extends Fragment {
 
-    private RecyclerView recyclerPlants;
     private PlantCardAdapter adapter;
-    private List<PlantCard> plantList;
+    private PlantListViewModel viewModel;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_list, container, false);
 
-        recyclerPlants = view.findViewById(R.id.recycler_activities);
-
-        // 准备数据
-        plantList = new ArrayList<>();
-        plantList.add(new PlantCard(
-                R.drawable.plant_card_img,
-                "兰花",
-                "Orchidaceae",
-                "Orchid",
-                "草兰",
-                "兰科 兰属",
-                "一级保护",
-                "花香清幽"
-        ));
-        plantList.add(new PlantCard(
-                R.drawable.plant_card_img,
-                "玫瑰",
-                "Rosa",
-                "Rose",
-                "月季",
-                "蔷薇科 蔷薇属",
-                "无保护等级",
-                "花色多样"
-        ));
-        plantList.add(new PlantCard(
-                R.drawable.plant_card_img,
-                "向日葵",
-                "Helianthus annuus",
-                "Sunflower",
-                "葵花",
-                "菊科 向日葵属",
-                "无保护等级",
-                "花盘大、向阳转动"
-        ));
-        plantList.add(new PlantCard(
-                R.drawable.plant_card_img,
-                "银杏",
-                "Ginkgo biloba",
-                "Ginkgo",
-                "白果树",
-                "银杏科 银杏属",
-                "二级保护",
-                "叶形独特、寿命极长"
-        ));
-        plantList.add(new PlantCard(
-                R.drawable.plant_card_img,
-                "仙人掌",
-                "Cactaceae",
-                "Cactus",
-                "刺球",
-                "仙人掌科 仙人掌属",
-                "无保护等级",
-                "耐旱、多刺"
-        ));
-        plantList.add(new PlantCard(
-                R.drawable.plant_card_img,
-                "樱花",
-                "Cerasus",
-                "Cherry Blossom",
-                "日本樱",
-                "蔷薇科 樱属",
-                "无保护等级",
-                "花期短、观赏性强"
-        ));
-
-
-        // 设置列表布局（1列）
+        RecyclerView recyclerPlants = view.findViewById(R.id.recycler_activities);
         recyclerPlants.setLayoutManager(new GridLayoutManager(getContext(), 1));
 
-        // 设置适配器
-        adapter = new PlantCardAdapter(getContext(), plantList);
+        // 初始化适配器
+        adapter = new PlantCardAdapter(new ArrayList<>());
         recyclerPlants.setAdapter(adapter);
 
-        // 绑定左右滑动事件
+        // 初始化ViewModel
+        viewModel = new ViewModelProvider(this).get(PlantListViewModel.class);
+        // 数据观察机制
+        viewModel.getPlants().observe(getViewLifecycleOwner(), plants -> {
+            adapter.setPlantList(plants);
+        });
+
+        // 设置滑动操作
+        setupSwipeActions(recyclerPlants);
+        return view;
+    }
+
+
+    /**
+     * 绑定左右滑动事件
+     * @param recyclerView
+     */
+    private void setupSwipeActions(RecyclerView recyclerView) {
         ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0,
                 ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
 
@@ -138,15 +90,6 @@ public class PlantListFragment extends Fragment {
 
             /**
              * 当滑动超过阈值时调用
-             * @param viewHolder The ViewHolder which has been swiped by the user.
-             * @param direction  The direction to which the ViewHolder is swiped. It is one of
-             *                   {@link #UP}, {@link #DOWN},
-             *                   {@link #LEFT} or {@link #RIGHT}. If your
-             *                   {@link #getMovementFlags(RecyclerView, ViewHolder)}
-             *                   method
-             *                   returned relative flags instead of {@link #LEFT} / {@link #RIGHT};
-             *                   `direction` will be relative as well. ({@link #START} or {@link
-             *                   #END}).
              */
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
@@ -166,16 +109,6 @@ public class PlantListFragment extends Fragment {
 
             /**
              * 用来画滑动时的背景和图标
-             * @param c                 The canvas which RecyclerView is drawing its children
-             * @param recyclerView      The RecyclerView to which ItemTouchHelper is attached to
-             * @param viewHolder        The ViewHolder which is being interacted by the User or it was
-             *                          interacted and simply animating to its original position
-             * @param dX                The amount of horizontal displacement caused by user's action
-             * @param dY                The amount of vertical displacement caused by user's action
-             * @param actionState       The type of interaction on the View. Is either {@link
-             *                          #ACTION_STATE_DRAG} or {@link #ACTION_STATE_SWIPE}.
-             * @param isCurrentlyActive True if this view is currently being controlled by the user or
-             *                          false it is simply animating back to its original state.
              */
             @Override
             public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView,
@@ -251,8 +184,7 @@ public class PlantListFragment extends Fragment {
 
         };
 
-        new ItemTouchHelper(simpleCallback).attachToRecyclerView(recyclerPlants);
-
-        return view;
+        new ItemTouchHelper(simpleCallback).attachToRecyclerView(recyclerView);
     }
 }
+

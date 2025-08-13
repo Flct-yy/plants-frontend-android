@@ -1,4 +1,4 @@
-package com.wect.plants_frontend_android.Model;
+package com.wect.plants_frontend_android.Data.Model;
 
 public class PlantCard {
     private int imageResId;       // 图片资源ID
@@ -9,9 +9,10 @@ public class PlantCard {
     private String classify;      // 科属种
     private String protection;    // 保护等级
     private String characteristic;// 特点
+    private Boolean isCollect;// 是否收藏
 
     public PlantCard(int imageResId, String plantName, String latinName, String englishName,
-                     String alias, String classify, String protection, String characteristic) {
+                     String alias, String classify, String protection, String characteristic, Boolean isCollect) {
         this.imageResId = imageResId;
         this.plantName = plantName;
         this.latinName = latinName;
@@ -20,6 +21,7 @@ public class PlantCard {
         this.classify = classify;
         this.protection = protection;
         this.characteristic = characteristic;
+        this.isCollect = isCollect;
     }
 
     public int getImageResId() { return imageResId; }
@@ -30,5 +32,9 @@ public class PlantCard {
     public String getClassify() { return classify; }
     public String getProtection() { return protection; }
     public String getCharacteristic() { return characteristic; }
+    public Boolean getCollect() {
+        return isCollect;
+    }
+
 }
 

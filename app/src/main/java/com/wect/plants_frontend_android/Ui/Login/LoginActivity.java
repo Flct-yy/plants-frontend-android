@@ -18,7 +18,7 @@ import com.wect.plants_frontend_android.R;
 import com.wect.plants_frontend_android.Ui.Register.RegisterActivity;
 import com.wect.plants_frontend_android.Utils.LoginUiUtils;
 import com.wect.plants_frontend_android.Utils.ToastUtil;
-import com.wect.plants_frontend_android.Based.BaseActivity;
+import com.wect.plants_frontend_android.Ui.Based.BaseActivity;
 
 import java.util.concurrent.TimeUnit;
 

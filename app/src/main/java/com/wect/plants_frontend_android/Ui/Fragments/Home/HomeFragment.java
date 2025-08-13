@@ -1,4 +1,4 @@
-package com.wect.plants_frontend_android.Fragments.Home;
+package com.wect.plants_frontend_android.Ui.Fragments.Home;
 
 import android.os.Bundle;
 
@@ -12,8 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.wect.plants_frontend_android.Adapter.NormalItemsAdapter;
-import com.wect.plants_frontend_android.Model.NormalArticle;
+import com.wect.plants_frontend_android.Ui.Adapter.NormalItemsAdapter;
+import com.wect.plants_frontend_android.Data.Model.NormalArticle;
 import com.wect.plants_frontend_android.R;
 
 import java.util.ArrayList;

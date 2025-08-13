@@ -1,4 +1,4 @@
-package com.wect.plants_frontend_android.Adapter;
+package com.wect.plants_frontend_android.Ui.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.wect.plants_frontend_android.Model.NormalArticle;
+import com.wect.plants_frontend_android.Data.Model.NormalArticle;
 import com.wect.plants_frontend_android.R;
 
 import java.util.List;
