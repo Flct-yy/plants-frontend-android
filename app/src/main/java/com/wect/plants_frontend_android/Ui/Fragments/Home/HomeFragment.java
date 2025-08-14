@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +17,7 @@ import android.view.ViewGroup;
 import com.wect.plants_frontend_android.Ui.Adapter.NormalItemsAdapter;
 import com.wect.plants_frontend_android.Data.Model.NormalArticle;
 import com.wect.plants_frontend_android.R;
+import com.wect.plants_frontend_android.Utils.BarUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,6 +82,9 @@ public class HomeFragment extends Fragment {
         // 设置适配器
         adapter = new NormalItemsAdapter(getContext(), articleList);
         recyclerFeatured.setAdapter(adapter);
+
+        // 适应状态栏的padding
+        BarUtils.applyStatusBarPadding(view);
 
         return view;
     }

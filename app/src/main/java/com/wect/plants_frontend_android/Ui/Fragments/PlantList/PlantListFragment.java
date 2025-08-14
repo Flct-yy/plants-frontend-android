@@ -26,6 +26,7 @@ import android.view.ViewGroup;
 
 import com.wect.plants_frontend_android.Ui.Adapter.PlantCardAdapter;
 import com.wect.plants_frontend_android.R;
+import com.wect.plants_frontend_android.Utils.BarUtils;
 import com.wect.plants_frontend_android.Utils.ToastUtil;
 import com.wect.plants_frontend_android.Utils.UnitsUtils;
 import com.wect.plants_frontend_android.Viewmodel.PlantListViewModel;
@@ -61,6 +62,10 @@ public class PlantListFragment extends Fragment {
 
         // 设置滑动操作
         setupSwipeActions(recyclerPlants);
+
+        // 适应状态栏的padding
+        BarUtils.applyStatusBarPadding(view);
+
         return view;
     }
 
