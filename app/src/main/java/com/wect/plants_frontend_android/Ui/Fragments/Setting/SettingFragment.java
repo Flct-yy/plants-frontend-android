@@ -36,7 +36,7 @@ public class SettingFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment SettingFragment.
+     * @return A new instance of fragment UserEditFragment.
      */
     // TODO: Rename and change types and number of parameters
     public static SettingFragment newInstance(String param1, String param2) {

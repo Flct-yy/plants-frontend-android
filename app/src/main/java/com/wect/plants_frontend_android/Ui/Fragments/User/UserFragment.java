@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,8 +14,11 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.wect.plants_frontend_android.R;
+import com.wect.plants_frontend_android.Ui.Fragments.User.Fragments.UserEditFragment;
 
 public class UserFragment extends Fragment {
+
+    private Button toEdit;
 
     @Nullable
     @Override
@@ -40,5 +44,36 @@ public class UserFragment extends Fragment {
             String[] titles = {"作品", "推荐", "收藏", "喜欢"};
             tab.setText(titles[position]);
         }).attach();
+
+        // 初始化控件
+        initViews();
+
+        // 设置监听器
+        setListeners();
+    }
+
+    private void initViews() {
+        toEdit = requireView().findViewById(R.id.user_edit); // 找到按钮
+    }
+    /**
+     * 设置监听器
+     */
+    private void setListeners() {
+        toEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getParentFragmentManager()
+                        .beginTransaction()
+                        .setCustomAnimations(
+                                R.anim.slide_in_right,  // 新Fragment进入动画
+                                R.anim.slide_out_left,  // 当前Fragment退出动画
+                                R.anim.slide_in_left,   // 返回时新Fragment进入
+                                R.anim.slide_out_right  // 返回时当前Fragment退出
+                        )
+                        .replace(R.id.container, new UserEditFragment())
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
     }
 }
