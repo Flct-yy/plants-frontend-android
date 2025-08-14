@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/white"
     tools:context=".Ui.Fragments.User.UserFragment">
@@ -186,18 +187,65 @@
             <!--简介-->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介 简介"
+                    android:textColor="@color/light_dark"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#CCCCCC"
+                    android:paddingBottom="10dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp" />
             </LinearLayout>
+
             <!--导航-->
-            <LinearLayout
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:tabIndicatorColor="@android:color/black"
+                app:tabIndicatorHeight="2dp"
+                app:tabSelectedTextColor="@android:color/black"
+                app:tabTextColor="@android:color/darker_gray"
+                app:tabTextAppearance="@style/MyTabTextAppearance"
+                app:tabRippleColor="@android:color/transparent">
 
-            </LinearLayout>
+                <com.google.android.material.tabs.TabItem
+                    android:text="作品"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:text="推荐"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:text="收藏"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:text="喜欢"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.tabs.TabLayout>
             <!--内容-->
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
         </LinearLayout>
-
-
     </LinearLayout>
 </FrameLayout>

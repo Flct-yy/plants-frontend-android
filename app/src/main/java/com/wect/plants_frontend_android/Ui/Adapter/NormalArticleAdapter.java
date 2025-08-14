@@ -17,7 +17,7 @@ import java.util.List;
 
 import com.bumptech.glide.Glide;
 
-public class NormalItemsAdapter extends RecyclerView.Adapter<NormalItemsAdapter.ViewHolder> {
+public class NormalArticleAdapter extends RecyclerView.Adapter<NormalArticleAdapter.ViewHolder> {
 
     private List<NormalArticle> items;
     private Context context;
@@ -25,7 +25,7 @@ public class NormalItemsAdapter extends RecyclerView.Adapter<NormalItemsAdapter.
     /**
      * 构造函数
      */
-    public NormalItemsAdapter(Context context, List<NormalArticle> items) {
+    public NormalArticleAdapter(Context context, List<NormalArticle> items) {
         this.context = context;
         this.items = items;
     }
@@ -62,7 +62,7 @@ public class NormalItemsAdapter extends RecyclerView.Adapter<NormalItemsAdapter.
      */
     @NonNull
     @Override
-    public NormalItemsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public NormalArticleAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context)
                 .inflate(R.layout.adapter_normal_article, parent, false);
         return new ViewHolder(v);
@@ -75,7 +75,7 @@ public class NormalItemsAdapter extends RecyclerView.Adapter<NormalItemsAdapter.
      * @param position The position of the item within the adapter's data set.
      */
     @Override
-    public void onBindViewHolder(@NonNull NormalItemsAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull NormalArticleAdapter.ViewHolder holder, int position) {
         NormalArticle item = items.get(position);
 
         holder.user_name.setText(item.user_name);
