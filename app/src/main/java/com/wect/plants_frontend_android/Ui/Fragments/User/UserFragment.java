@@ -9,16 +9,23 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import com.wect.plants_frontend_android.Data.local.Databases.Entities.User;
+import com.wect.plants_frontend_android.Data.local.PreferencesManager;
 import com.wect.plants_frontend_android.R;
 import com.wect.plants_frontend_android.Ui.Fragments.User.Fragments.UserEditFragment;
+import com.wect.plants_frontend_android.Viewmodel.UserViewModel;
+
+import java.util.List;
 
 public class UserFragment extends Fragment {
 
     private Button toEdit;
+    private UserViewModel userViewModel;
 
     @Nullable
     @Override
@@ -45,11 +52,18 @@ public class UserFragment extends Fragment {
             tab.setText(titles[position]);
         }).attach();
 
+        // 初始化 ViewModel
+        userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+
+        // 设置观察者
+        setupObservers();
+
         // 初始化控件
         initViews();
 
         // 设置监听器
         setListeners();
+
     }
 
     private void initViews() {
@@ -75,5 +89,21 @@ public class UserFragment extends Fragment {
                         .commit();
             }
         });
+    }
+
+    /**
+     * 设置观察者
+     */
+    private void setupObservers() {
+        // 观察用户列表变化
+        userViewModel.getAllUsers().observe(getViewLifecycleOwner(), users -> {
+            // 更新 UI
+            updateUserList(users);
+        });
+    }
+
+    private void updateUserList(List<User> users) {
+        // 实现更新 RecyclerView 或其他 UI 的逻辑
+
     }
 }

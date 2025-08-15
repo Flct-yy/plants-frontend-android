@@ -72,4 +72,19 @@ dependencies {
 
     //RecyclerViewSwipeDecorator
     implementation("it.xabaras.android:recyclerview-swipedecorator:1.4")
+
+    // Room 数据库
+    implementation(libs.room.runtime)
+    annotationProcessor(libs.room.compiler)
+
+    // Lifecycle 组件
+    implementation(libs.lifecycle.viewmodel)
+    implementation(libs.lifecycle.livedata)
+
+    // DataStore（替代 SharedPreferences）
+    implementation("androidx.datastore:datastore-preferences-rxjava3:1.1.0")
+    implementation("androidx.datastore:datastore-rxjava3:1.1.0")
+
+    // 加密存储（可选） security
+    implementation(libs.security.crypto)
 }
