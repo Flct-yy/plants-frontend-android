@@ -23,6 +23,8 @@ public class UserEditFragment extends Fragment {
         // 找到控件
         EditText editContent = view.findViewById(R.id.user_edit_content);
         TextView editCounter = view.findViewById(R.id.user_edit_counter);
+        int length = editContent.getText() != null ? editContent.getText().length() : 0;
+        editCounter.setText(length + "/200");
 
         // 监听文字变化 (56/200)
         editContent.addTextChangedListener(new TextWatcher() {

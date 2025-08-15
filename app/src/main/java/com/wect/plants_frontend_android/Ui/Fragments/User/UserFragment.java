@@ -41,7 +41,7 @@ public class UserFragment extends Fragment {
 
         // TabLayout 和 ViewPager2 联动
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
-            String[] titles = {"作品", "推荐", "收藏", "喜欢"};
+            String[] titles = {"作品", "喜欢"};
             tab.setText(titles[position]);
         }).attach();
 
