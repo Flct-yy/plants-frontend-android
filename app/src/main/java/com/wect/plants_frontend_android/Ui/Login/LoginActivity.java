@@ -14,8 +14,11 @@ import android.widget.TextView;
 import androidx.activity.OnBackPressedCallback;
 
 import com.jakewharton.rxbinding4.view.RxView;
+import com.wect.plants_frontend_android.Data.local.PreferencesManager;
 import com.wect.plants_frontend_android.R;
+import com.wect.plants_frontend_android.Ui.MainActivity;
 import com.wect.plants_frontend_android.Ui.Register.RegisterActivity;
+import com.wect.plants_frontend_android.Utils.BarUtils;
 import com.wect.plants_frontend_android.Utils.LoginUiUtils;
 import com.wect.plants_frontend_android.Utils.ToastUtil;
 import com.wect.plants_frontend_android.Ui.Based.BaseActivity;
@@ -53,6 +56,7 @@ public class LoginActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
 
         // 初始化控件
         initViews();
@@ -256,13 +260,27 @@ public class LoginActivity extends BaseActivity {
         // 模拟网络请求延迟
         handler.postDelayed(() -> {
             // 这里应该是实际的登录逻辑
+            // 假设后端返回了 userId 和 token
+            // 没做
+            long userId = 001;
+            String token = "abcdefg123456"; // 这里应该是从接口返回的 token
+
+            // 保存到 DataStore
+            PreferencesManager.saveString(this, PreferencesManager.USER_TOKEN_KEY, token);
+            PreferencesManager.saveLong(this, PreferencesManager.USER_ID_KEY, userId);
+            PreferencesManager.saveLong(this, PreferencesManager.LAST_LOGIN_KEY, System.currentTimeMillis());
+
             ToastUtil.show(this, "登录成功");
 
             // 恢复按钮状态
             btnLogin.setEnabled(true);
             btnLogin.setAlpha(1f);
 
-            // 可以在这里添加页面跳转逻辑
+            // 跳转到主界面
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+
         }, 1500);
     }
 

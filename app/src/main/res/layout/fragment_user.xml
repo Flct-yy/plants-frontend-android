@@ -95,6 +95,7 @@
                         android:layout_marginEnd="16dp">
 
                         <TextView
+                            android:id="@+id/user_like"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="350"
@@ -110,7 +111,7 @@
                             android:textColor="#888888"/>
                     </LinearLayout>
 
-                    <!-- 获赞 -->
+                    <!-- 关注 -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -120,6 +121,7 @@
                         android:layout_marginEnd="16dp">
 
                         <TextView
+                            android:id="@+id/user_following"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="3"
@@ -135,7 +137,7 @@
                             android:textColor="#888888"/>
                     </LinearLayout>
 
-                    <!-- 互关 -->
+                    <!-- 粉丝 -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -145,6 +147,7 @@
                         android:layout_marginEnd="16dp">
 
                         <TextView
+                            android:id="@+id/user_followers"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="248"
