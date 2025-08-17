@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".Ui.Fragments.Message.MessageFragment">
 
     <!-- 顶部导航栏 -->
@@ -12,7 +13,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical|center_horizontal"
         android:padding="10dp"
-        android:background="@color/bg_fit_gray">
+        android:background="@color/white">
 
         <TextView
             android:layout_width="0dp"
@@ -29,7 +30,7 @@
 
     <!-- 消息列表 -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
