@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Plantsfrontendandroid">
         <activity
+            android:name=".Ui.EditArticles.EditArticlesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Ui.ArticleDetails.ArticleDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".Ui.Login.ForgotActivity"
             android:exported="false" />
         <activity

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 按下状态 -->
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="#70A4F0"/> <!-- 按下颜色，可以比可点击颜色深一点 -->
+            <corners android:radius="8dp"/>
+        </shape>
+    </item>
+
+    <!-- 不可点击状态 -->
+    <item android:state_enabled="false">
+        <shape android:shape="rectangle">
+            <solid android:color="#BCD5FD"/> <!-- 不可点击颜色 -->
+            <corners android:radius="8dp"/>
+        </shape>
+    </item>
+
+    <!-- 可点击状态 -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#90B4F7"/> <!-- 可点击颜色 -->
+            <corners android:radius="8dp"/>
+        </shape>
+    </item>
+</selector>

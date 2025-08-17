@@ -94,4 +94,7 @@ dependencies {
 
     // 加密存储（可选） security
     implementation(libs.security.crypto)
+
+    // Gson 依赖
+    implementation("com.google.code.gson:gson:2.10.1")
 }

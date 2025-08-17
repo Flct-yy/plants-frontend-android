@@ -8,8 +8,9 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.wect.plants_frontend_android.Data.local.PreferencesManager;
+import com.wect.plants_frontend_android.Ui.ArticleDetails.ArticleDetailsActivity;
 import com.wect.plants_frontend_android.Ui.Based.BaseActivity;
-import com.wect.plants_frontend_android.Ui.Fragments.ChatAI.AIFragment;
+import com.wect.plants_frontend_android.Ui.EditArticles.EditArticlesActivity;
 import com.wect.plants_frontend_android.Ui.Fragments.Message.MessageFragment;
 import com.wect.plants_frontend_android.Ui.Fragments.Home.HomeFragment;
 import com.wect.plants_frontend_android.Ui.Fragments.PlantList.PlantListFragment;
@@ -140,9 +141,9 @@ public class MainActivity extends BaseActivity {
             return true;
         });
 
-        // 中间悬浮按钮点击（打开 AIFragment）
+        // 中间悬浮按钮点击（打开 ）
         fabCenter.setOnClickListener(v -> {
-            loadFragment(new AIFragment());
+
             // 如果需要显示它在导航选中状态，可以手动取消导航栏选中项
             // 分组 ID   0，表示作用于所有菜单项。
             bottomNavigationView.getMenu().setGroupCheckable(0, true, false);
@@ -150,6 +151,10 @@ public class MainActivity extends BaseActivity {
                 bottomNavigationView.getMenu().getItem(i).setChecked(false);
             }
             bottomNavigationView.getMenu().setGroupCheckable(0, true, true);
+
+            // 跳转到 EditArticlesActivity
+            Intent intent = new Intent(this, EditArticlesActivity.class);
+            startActivity(intent);
         });
     }
 
