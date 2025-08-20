@@ -74,7 +74,7 @@ public interface UserDao {
     void updateIntroduction(long userId, String introduction);
 
     // 作用：获取轻量级用户信息（用于列表展示）
-    @Query("SELECT id, name, avatar, likes FROM users")
+    @Query("SELECT id, name, avatar AS avatarUrl, likes FROM users")
     LiveData<List<UserBasicInfo>> getUserBasicInfo();
 
     // 作用：按点赞数降序分页查询用户

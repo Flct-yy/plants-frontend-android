@@ -6,7 +6,11 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import com.wect.plants_frontend_android.Data.local.Databases.DAO.ArticlesDao;
+import com.wect.plants_frontend_android.Data.local.Databases.DAO.LikeArticleDao;
 import com.wect.plants_frontend_android.Data.local.Databases.DAO.UserDao;
+import com.wect.plants_frontend_android.Data.local.Databases.Entities.Articles;
+import com.wect.plants_frontend_android.Data.local.Databases.Entities.LikeArticle;
 import com.wect.plants_frontend_android.Data.local.Databases.Entities.User;
 
 import java.util.concurrent.ExecutorService;
@@ -15,10 +19,12 @@ import java.util.concurrent.Executors;
 // 使用 @Database 注解声明数据库配置
 // 定义包含的实体类 (entities)
 // Room 数据库的核心入口类，负责数据库的创建和管理。
-@Database(entities = {User.class}, version = 1)
+@Database(entities = {User.class, Articles.class, LikeArticle.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
     // 提供 DAO 接口的抽象方法
     public abstract UserDao userDao();
+    public abstract ArticlesDao articlesDao();
+    public abstract LikeArticleDao likeArticleDao();   // 新增
 
     /**
      * 获取DAO实例

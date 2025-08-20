@@ -28,7 +28,12 @@ public class User {
     private String introduction = "";  // 默认空字符串
     //性别
     @ColumnInfo(name = "gender")
-    private String gender = "unknow"; // 默认值
+    private String gender = "unknown"; // 默认值
+    public static final String GENDER_MALE = "male";
+    public static final String GENDER_FEMALE = "female";
+    public static final String GENDER_OTHER = "other";
+    public static final String GENDER_UNKNOWN = "unknown";
+
     // 获赞
     @ColumnInfo(name = "likes")
     private int likes = 0;       // 改为数值类型

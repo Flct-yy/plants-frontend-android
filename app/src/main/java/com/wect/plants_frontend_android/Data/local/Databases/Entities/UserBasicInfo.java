@@ -2,16 +2,21 @@ package com.wect.plants_frontend_android.Data.local.Databases.Entities;
 
 // 新增精简用户信息类
 public class UserBasicInfo {
-    public long id;
-    public String name;
-    public String avatar;
-    public int likes;
+    private long id;
+    private String name;
+    private String avatarUrl;
+    private int likes;
 
-    // 构造函数（Room 需要）
-    public UserBasicInfo(long id, String name, String avatar, int likes) {
+    public UserBasicInfo(long id, String name, String avatarUrl, int likes) {
         this.id = id;
         this.name = name;
-        this.avatar = avatar;
+        this.avatarUrl = avatarUrl;
         this.likes = likes;
     }
+
+    // 添加 getter 方法
+    public long getId() { return id; }
+    public String getName() { return name; }
+    public String getAvatarUrl() { return avatarUrl; }
+    public int getLikes() { return likes; }
 }
