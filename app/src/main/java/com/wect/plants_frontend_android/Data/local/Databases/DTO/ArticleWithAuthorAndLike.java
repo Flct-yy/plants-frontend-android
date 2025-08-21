@@ -20,6 +20,11 @@ public class ArticleWithAuthorAndLike {
     @Ignore
     public boolean isLiked;
 
+    // 添加无参构造函数（Room 需要）
+    public ArticleWithAuthorAndLike() {
+    }
+
+    // 业务逻辑使用的构造函数
     public ArticleWithAuthorAndLike(Articles articles, User author, boolean isLiked) {
         this.articles = articles;
         this.author = author;

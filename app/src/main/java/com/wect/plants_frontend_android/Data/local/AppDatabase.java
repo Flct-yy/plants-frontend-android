@@ -8,9 +8,13 @@ import androidx.room.RoomDatabase;
 
 import com.wect.plants_frontend_android.Data.local.Databases.DAO.ArticlesDao;
 import com.wect.plants_frontend_android.Data.local.Databases.DAO.LikeArticleDao;
+import com.wect.plants_frontend_android.Data.local.Databases.DAO.MessageDao;
+import com.wect.plants_frontend_android.Data.local.Databases.DAO.PlantDao;
 import com.wect.plants_frontend_android.Data.local.Databases.DAO.UserDao;
 import com.wect.plants_frontend_android.Data.local.Databases.Entities.Articles;
 import com.wect.plants_frontend_android.Data.local.Databases.Entities.LikeArticle;
+import com.wect.plants_frontend_android.Data.local.Databases.Entities.Message;
+import com.wect.plants_frontend_android.Data.local.Databases.Entities.Plant;
 import com.wect.plants_frontend_android.Data.local.Databases.Entities.User;
 
 import java.util.concurrent.ExecutorService;
@@ -19,13 +23,20 @@ import java.util.concurrent.Executors;
 // 使用 @Database 注解声明数据库配置
 // 定义包含的实体类 (entities)
 // Room 数据库的核心入口类，负责数据库的创建和管理。
-@Database(entities = {User.class, Articles.class, LikeArticle.class}, version = 1)
+@Database(entities = {
+        User.class,
+        Articles.class,
+        LikeArticle.class,
+        Plant.class,
+        Message.class
+}, version = 2) // 版本号需要增加
 public abstract class AppDatabase extends RoomDatabase {
     // 提供 DAO 接口的抽象方法
     public abstract UserDao userDao();
     public abstract ArticlesDao articlesDao();
-    public abstract LikeArticleDao likeArticleDao();   // 新增
-
+    public abstract LikeArticleDao likeArticleDao();
+    public abstract PlantDao plantDao();
+    public abstract MessageDao messageDao();
     /**
      * 获取DAO实例
      * UserDao dao = AppDatabase.getDatabase(context).userDao();
