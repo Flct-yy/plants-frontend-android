@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.wect.plants_frontend_android.Data.Model.PlantCard;
+import com.wect.plants_frontend_android.Ui.UIModel.PlantCard;
 import com.wect.plants_frontend_android.Data.Repository.PlantRepository;
 
 import java.util.List;

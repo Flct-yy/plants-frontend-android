@@ -8,15 +8,14 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.wect.plants_frontend_android.Data.local.PreferencesManager;
-import com.wect.plants_frontend_android.Ui.ArticleDetails.ArticleDetailsActivity;
-import com.wect.plants_frontend_android.Ui.Based.BaseActivity;
-import com.wect.plants_frontend_android.Ui.EditArticles.EditArticlesActivity;
+import com.wect.plants_frontend_android.Ui.Activity.Based.BaseActivity;
+import com.wect.plants_frontend_android.Ui.Activity.EditArticles.EditArticlesActivity;
 import com.wect.plants_frontend_android.Ui.Fragments.Message.MessageFragment;
 import com.wect.plants_frontend_android.Ui.Fragments.Home.HomeFragment;
 import com.wect.plants_frontend_android.Ui.Fragments.PlantList.PlantListFragment;
 import com.wect.plants_frontend_android.Ui.Fragments.User.UserFragment;
 import com.wect.plants_frontend_android.R;
-import com.wect.plants_frontend_android.Ui.Login.LoginActivity;
+import com.wect.plants_frontend_android.Ui.Activity.Login.LoginActivity;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;

@@ -1,4 +1,4 @@
-package com.wect.plants_frontend_android.Ui.ArticleDetails;
+package com.wect.plants_frontend_android.Ui.Activity.ArticleDetails;
 
 import android.os.Bundle;
 

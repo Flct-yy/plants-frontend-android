@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.wect.plants_frontend_android.Data.Model.MessageItem;
+import com.wect.plants_frontend_android.Ui.UIModel.MessageItem;
 import com.wect.plants_frontend_android.R;
 
 import java.util.List;

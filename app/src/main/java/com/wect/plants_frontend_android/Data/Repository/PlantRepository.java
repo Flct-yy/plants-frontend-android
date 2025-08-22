@@ -3,7 +3,7 @@ package com.wect.plants_frontend_android.Data.Repository;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.wect.plants_frontend_android.Data.Model.PlantCard;
+import com.wect.plants_frontend_android.Ui.UIModel.PlantCard;
 import com.wect.plants_frontend_android.R;
 
 import java.util.ArrayList;

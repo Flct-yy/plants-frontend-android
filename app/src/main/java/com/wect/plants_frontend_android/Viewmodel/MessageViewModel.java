@@ -7,7 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.wect.plants_frontend_android.Data.Model.MessageItem;
+import com.wect.plants_frontend_android.Ui.UIModel.MessageItem;
 
 import java.util.ArrayList;
 import java.util.List;

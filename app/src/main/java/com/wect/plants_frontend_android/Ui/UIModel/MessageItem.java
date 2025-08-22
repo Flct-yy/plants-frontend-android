@@ -1,4 +1,4 @@
-package com.wect.plants_frontend_android.Data.Model;
+package com.wect.plants_frontend_android.Ui.UIModel;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package com.wect.plants_frontend_android.Data.Model;
+package com.wect.plants_frontend_android.Ui.UIModel;
 
 public class PlantCard {
     private int imageResId;       // 图片资源ID

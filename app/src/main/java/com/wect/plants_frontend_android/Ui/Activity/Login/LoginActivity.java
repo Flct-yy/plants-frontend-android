@@ -1,4 +1,4 @@
-package com.wect.plants_frontend_android.Ui.Login;
+package com.wect.plants_frontend_android.Ui.Activity.Login;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,11 +17,10 @@ import com.jakewharton.rxbinding4.view.RxView;
 import com.wect.plants_frontend_android.Data.local.PreferencesManager;
 import com.wect.plants_frontend_android.R;
 import com.wect.plants_frontend_android.Ui.MainActivity;
-import com.wect.plants_frontend_android.Ui.Register.RegisterActivity;
-import com.wect.plants_frontend_android.Utils.BarUtils;
+import com.wect.plants_frontend_android.Ui.Activity.Register.RegisterActivity;
 import com.wect.plants_frontend_android.Utils.LoginUiUtils;
 import com.wect.plants_frontend_android.Utils.ToastUtil;
-import com.wect.plants_frontend_android.Ui.Based.BaseActivity;
+import com.wect.plants_frontend_android.Ui.Activity.Based.BaseActivity;
 
 import java.util.concurrent.TimeUnit;
 

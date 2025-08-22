@@ -12,19 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Plantsfrontendandroid">
         <activity
-            android:name=".Ui.EditArticles.EditArticlesActivity"
+            android:name=".Ui.Activity.EditArticles.EditArticlesActivity"
             android:exported="false" />
         <activity
-            android:name=".Ui.ArticleDetails.ArticleDetailsActivity"
+            android:name=".Ui.Activity.ArticleDetails.ArticleDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".Ui.Login.ForgotActivity"
+            android:name=".Ui.Activity.Login.ForgotActivity"
             android:exported="false" />
         <activity
-            android:name=".Ui.Register.RegisterActivity"
+            android:name=".Ui.Activity.Register.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".Ui.Login.LoginActivity"
+            android:name=".Ui.Activity.Login.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".Ui.MainActivity"

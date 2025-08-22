@@ -1,4 +1,4 @@
-package com.wect.plants_frontend_android.Data.Model;
+package com.wect.plants_frontend_android.Ui.UIModel;
 
 public class NormalArticle {
     // 普通Item的数据

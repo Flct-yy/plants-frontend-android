@@ -1,4 +1,4 @@
-package com.wect.plants_frontend_android.Ui.Login;
+package com.wect.plants_frontend_android.Ui.Activity.Login;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -15,7 +15,7 @@ import androidx.activity.OnBackPressedCallback;
 import com.wect.plants_frontend_android.R;
 import com.wect.plants_frontend_android.Utils.LoginUiUtils;
 import com.wect.plants_frontend_android.Utils.ToastUtil;
-import com.wect.plants_frontend_android.Ui.Based.BaseActivity;
+import com.wect.plants_frontend_android.Ui.Activity.Based.BaseActivity;
 
 public class ForgotActivity extends BaseActivity {
 

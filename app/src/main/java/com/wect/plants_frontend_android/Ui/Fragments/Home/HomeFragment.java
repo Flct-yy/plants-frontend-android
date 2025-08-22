@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.wect.plants_frontend_android.Ui.Adapter.NormalArticleAdapter;
-import com.wect.plants_frontend_android.Data.Model.NormalArticle;
+import com.wect.plants_frontend_android.Ui.UIModel.NormalArticle;
 import com.wect.plants_frontend_android.R;
 import com.wect.plants_frontend_android.Utils.BarUtils;
 
