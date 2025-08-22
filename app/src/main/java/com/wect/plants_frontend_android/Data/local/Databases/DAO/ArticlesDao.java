@@ -71,5 +71,26 @@ public interface ArticlesDao {
     @Transaction
     @Query("SELECT * FROM articles ORDER BY created_at DESC")
     List<ArticleWithAuthorAndLike> getAllArticlesWithAuthors();
+
+    // 获取用户点赞的文章列表（带作者信息）
+    @Transaction
+    @Query(
+            "SELECT a.*, u.* " +
+                    "FROM articles a " +
+                    "INNER JOIN users u ON a.author_id = u.id " +
+                    "INNER JOIN like_articles la ON a.id = la.article_id " +
+                    "WHERE la.user_id = :userId " +
+                    "ORDER BY la.created_at DESC")
+    LiveData<List<ArticleWithAuthorAndLike>> getLikedArticlesByUser(long userId);
+
+    // 获取文章详情（含作者和点赞状态）
+    @Transaction
+    @Query(
+            "SELECT a.*, u.*, " +
+                    "EXISTS (SELECT 1 FROM like_articles WHERE user_id = :userId AND article_id = a.id) AS isLiked " +
+                    "FROM articles a " +
+                    "INNER JOIN users u ON a.author_id = u.id " +
+                    "WHERE a.id = :articleId")
+    LiveData<ArticleWithAuthorAndLike> getArticleDetail(long articleId, long userId);
 }
 

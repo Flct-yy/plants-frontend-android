@@ -8,6 +8,7 @@ import androidx.room.Query;
 import androidx.room.Transaction;
 import androidx.room.Update;
 
+import com.wect.plants_frontend_android.Data.local.Databases.DTO.MessageWithSender;
 import com.wect.plants_frontend_android.Data.local.Databases.Entities.Message;
 
 import java.util.List;
@@ -44,4 +45,8 @@ public interface MessageDao {
 
     @Query("DELETE FROM messages")
     void deleteAll();
+
+    @Transaction
+    @Query("SELECT * FROM messages WHERE conversation_id = :conversationId ORDER BY created_at ASC")
+    LiveData<List<MessageWithSender>> getMessagesWithSenders(String conversationId);
 }

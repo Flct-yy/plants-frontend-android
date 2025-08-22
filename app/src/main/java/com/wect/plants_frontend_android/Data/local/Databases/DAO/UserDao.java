@@ -46,7 +46,7 @@ public interface UserDao {
     void incrementLikes(long userId, int increment);
 
     // 作用：原子更新用户关注他人的数量
-    @Query("UPDATE users SET following = following + :increment WHERE id = :userId")
+    @Query("UPDATE users SET `following` = `following` + :increment WHERE id = :userId")
     void incrementFollowing(long userId, int increment);
 
     // 作用：原子更新用户的粉丝数量
@@ -82,4 +82,12 @@ public interface UserDao {
     // offset：偏移量（当前页×每页数量）
     @Query("SELECT * FROM users ORDER BY likes DESC LIMIT :limit OFFSET :offset")
     LiveData<List<User>> getPopularUsers(int limit, int offset);
+
+    // 获取用户的粉丝列表
+    @Query("SELECT * FROM users WHERE id IN (SELECT follower_id FROM follows WHERE following_id = :userId)")
+    LiveData<List<User>> getFollowers(long userId);
+
+    // 获取用户的关注列表
+    @Query("SELECT * FROM users WHERE id IN (SELECT following_id FROM follows WHERE follower_id = :userId)")
+    LiveData<List<User>> getFollowing(long userId);
 }

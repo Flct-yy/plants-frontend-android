@@ -7,11 +7,15 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.wect.plants_frontend_android.Data.local.Databases.DAO.ArticlesDao;
+import com.wect.plants_frontend_android.Data.local.Databases.DAO.CommentDao;
+import com.wect.plants_frontend_android.Data.local.Databases.DAO.FollowDao;
 import com.wect.plants_frontend_android.Data.local.Databases.DAO.LikeArticleDao;
 import com.wect.plants_frontend_android.Data.local.Databases.DAO.MessageDao;
 import com.wect.plants_frontend_android.Data.local.Databases.DAO.PlantDao;
 import com.wect.plants_frontend_android.Data.local.Databases.DAO.UserDao;
 import com.wect.plants_frontend_android.Data.local.Databases.Entities.Articles;
+import com.wect.plants_frontend_android.Data.local.Databases.Entities.Comment;
+import com.wect.plants_frontend_android.Data.local.Databases.Entities.Follow;
 import com.wect.plants_frontend_android.Data.local.Databases.Entities.LikeArticle;
 import com.wect.plants_frontend_android.Data.local.Databases.Entities.Message;
 import com.wect.plants_frontend_android.Data.local.Databases.Entities.Plant;
@@ -28,8 +32,10 @@ import java.util.concurrent.Executors;
         Articles.class,
         LikeArticle.class,
         Plant.class,
-        Message.class
-}, version = 2) // 版本号需要增加
+        Message.class,
+        Comment.class,    // 新增
+        Follow.class      // 新增
+}, version = 3)  // 版本号+1
 public abstract class AppDatabase extends RoomDatabase {
     // 提供 DAO 接口的抽象方法
     public abstract UserDao userDao();
@@ -37,6 +43,8 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract LikeArticleDao likeArticleDao();
     public abstract PlantDao plantDao();
     public abstract MessageDao messageDao();
+    public abstract CommentDao commentDao();
+    public abstract FollowDao followDao();
     /**
      * 获取DAO实例
      * UserDao dao = AppDatabase.getDatabase(context).userDao();
